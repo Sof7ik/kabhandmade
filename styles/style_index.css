@@ -1,0 +1,151 @@
+* {
+	padding: 0;
+	margin: 0;
+	font-family: 'Roboto Condensed', sans-serif;
+}
+
+html, body {
+	height: 100%;
+}
+
+.wrapper {
+	heigh: 100%;
+}
+
+ {
+	display: none;
+}
+
+header {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	align-items: center;
+	background: linear-gradient(to top, #fefcea, #f1da36);
+	padding: 1%;
+}
+
+nav {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+img.logo_img {				/*Класс, привязанный к логотипам вк и handmade*/
+	width: 50px;
+	border: 2px solid black;
+}
+
+a.logo_a {					/*Класс, привязанный к ссылкам внутри логотипов вк и handmade*/
+	display: block;	
+}
+
+content {					/*Класс-контейнер для формы на странице*/
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	align-content: flex-start;
+}
+
+img.seat_type_logo { 		/*Класс, привязанный к изображениям типа покрытия, цвета и т.д.*/
+	width: 100px;
+	transition: all .4s;
+}
+
+form.types {				/*Класс для главной формы на странице*/
+	background: linear-gradient(to bottom, #C5FF7A, #8FD13A);
+	padding: 1.5% 4%;
+}
+
+section.motocycle_type_select {		/*Класс, привязанный к секцции выбора мотика и типа покрытия сиденья*/
+	display: flex;
+	flex-flow: column wrap;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+select {					/*Класс, привязанный к выбору мотика*/
+	border-top: 3px solid #00F3FF;
+	border-left: 3px solid #FF00F7;
+	border-bottom: 3px solid #00FF6C;
+	border-right: 3px solid #B900FF;
+	width: 200px;
+}
+
+.input_motocycle_type_select {
+	width: 300px; 
+	height: 30px;
+	border: 3px solid #00FF23;
+	padding: 0.2% 0.5%;
+	font-size: 20px;
+}
+
+div.seat_cover_type_select {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+/*.input_radio, .under_hr {
+ 	display: none;
+}
+*/
+
+div.seat_color > .input_radio {
+	margin-bottom: 15%;
+}
+
+section.seat_color_select /*Класс, привязанный к выбору цвета покрытия*/,  
+section.seat_cover_type_select /*Класс, привязанный к выбору типа покрытия*/
+{
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: space-around;
+	border-top: 3px solid black;
+	border-bottom: 3px solid black;
+	padding: 1% 0;
+	margin-top: 2%;
+}
+
+div.seat_color {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+input.seat_color {
+	margin-bottom: 20px;
+}
+
+label.seat_color {
+	transition: all .4s;
+	margin-bottom: 14%;
+}
+
+.seat_type_logo:hover {
+	transform: scale(1.4);
+	cursor: pointer;
+	transition: all .4s;
+}
+
+section.submit {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+	align-items: center;
+}
+
+section.submit > input {
+	margin-top: 1%;
+	padding: 1% 2%;
+	background-color: #FF9B00;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	border: 4px solid white;
+	border-radius: 10px;
+}
