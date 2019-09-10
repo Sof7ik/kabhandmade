@@ -1,9 +1,9 @@
 <?
 
-$host = localhost;
-$user = root;
+$host = 'localhost';
+$user = 'root';
 $password = '';
-$db_name = kabhandmade;
+$db_name = 'kabhandmade';
 
 $link = mysqli_connect($host, $user, $password, $db_name);
 

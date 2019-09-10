@@ -11,7 +11,7 @@ html, body {
 	heigh: 100%;
 }
 
-input {
+ {
 	display: none;
 }
 
@@ -72,6 +72,10 @@ select {					/*Класс, привязанный к выбору мотика*/
 	width: 200px;
 }
 
+/*.input_radio, .under_hr {
+ 	display: none;
+}
+*/
 section.seat_color_select {		/*Класс, привязанный к выбору цвета покрытия*/
 	display: flex;
 	flex-flow: row wrap;
@@ -79,7 +83,7 @@ section.seat_color_select {		/*Класс, привязанный к выбор�
 	justify-content: space-around;
 	border-top: 3px solid black;
 	border-bottom: 3px solid black;
-	padding: 4.5% 0;
+	padding: 2% 0;
 }
 
 label.seat_color {
@@ -88,6 +92,13 @@ label.seat_color {
 
 .seat_type_logo:hover, .seat_color:hover {
 	width: 150px;
+	transform: round(10000);
 	cursor: pointer;
 	transition: all .4s;
+}
+
+textarea {
+	font-size: 15px;
+	width: 400px;
+	height: 150px;
 }
