@@ -28,80 +28,91 @@ session_start();
 		<form class="types" action="send.php" method="POST">
 
 			<section class="motocycle_type_select">
-
-				<h3>ВЫБЕРИТЕ СВОЙ МОТОЦИКЛ</h3>
-
-				<select name="motocycle_type_select">
-					 <option value="KTM SX85 2001-2015">KTM SX85 2001-2015</option>
-					 <option value="KTM SX125 2001-2015">KTM SX125 2001-2015</option>
-					 <option value="KTM SX250F 2001-2015">KTM SX250F 2001-2015</option>
-					 <option value="KTM SX450F 2001-2015">KTM SX450F 2001-2015</option>
-					 <option value="Suzukui RM-Z250 2013">Suzukui RM-Z250 2013</option>
-					 <option value="Suzukui RM-Z450 2017">Suzukui RM-Z450 2017</option>
-					 <option value="Kawasaki KX250F 2017">Kawasaki KX250F 2017</option>
-				</select>
-
-				<h3 style="margin-top: 2%;">ЕСЛИ ВЫ НЕ НАШЛИ СВОЙ МОТОЦИКЛ В МЕНЮ, ВВЕДИТЕ ЕГО НАЗВАНИЕ СЮДА</h3>
-				<input type="text" name="motocycle_type_select_one" class="input_motocycle_type_select">
+	
+				<h3 style="margin-bottom: 0.5%;">ВВЕДИТЕ НАЗВАНИЕ МОТОЦИКЛА СЮДА</h3>
+				<input type="text" name="motocycle_type_select" class="input_motocycle_type_select" required="">
 
 			</section>
 
-			<section class="seat_cover_type_select">
+			<section class="cover_and_color">
 
-				<div class="seat_cover_type_select">
+				<section class="seat_cover_type_select">
 
-					<input type="radio" name="seat_cover_type" id="Anti_Skid" required="" value="AntiSkid" class="input_radio">
-					
-					<label for="Anti_Skid" class="seat_color">Anti-Skid</label>					
-					
-					<label for="Anti_Skid" class="seat_type"><img src="https://sun9-6.userapi.com/c623900/v623900527/11485d/0aSs_aoR3H8.jpg" class="seat_type_logo"></label>
+					<h2>ВЫБЕРИТЕ ТИП МАТЕРИАЛА</h2>
 
-				</div>
+					<div class="seat_cover_type_select">
 
-				<div class="seat_cover_type_select">
+						<input type="radio" name="seat_cover_type" id="Anti_Skid" required="" value="AntiSkid" class="input_radio">	
 
-					<input type="radio" name="seat_cover_type" id="Pro_Grip" required="" value="SuperGrip" class="input_radio">
-					
-					<label for="Pro_Grip" class="seat_color">ProGrip</label>
-					
-					<label for="Pro_Grip" style="margin-bottom: 3.5%;" class="seat_type"><img src="https://sun9-6.userapi.com/c623900/v623900527/11485d/0aSs_aoR3H8.jpg" class="seat_type_logo" class="seat_type_logo"></label>
+						<label for="Anti_Skid" class="seat_cover_type_name">Anti-Skid</label>	
+						
+						<label for="Anti_Skid" class="seat_type"><img src="https://sun9-6.userapi.com/c623900/v623900527/11485d/0aSs_aoR3H8.jpg" class="seat_type_logo"></label>
 
-				</div>
+					</div>
 
-			</section>
+					<div class="seat_cover_type_select">
 
-			<section class="seat_color_select">
+						<input type="radio" name="seat_cover_type" id="SuperGrip" required="" value="SuperGrip" class="input_radio">
 
-				<div class="seat_color">
-					<input type="radio" name="seat_color" id="yellow" required="" value="Жёлтый" class="input_radio">
-					<label for="yellow" class="seat_color"><img src="https://sun9-6.userapi.com/c623900/v623900527/11485d/0aSs_aoR3H8.jpg" class="seat_type_logo"></label>
-				</div>
+						<label for="SuperGrip" class="seat_cover_type_name">ProGrip</label>
+						
+						<label for="SuperGrip" style="margin-bottom: 3.5%;" class="seat_type"><img src="https://sun9-6.userapi.com/c623900/v623900527/11485d/0aSs_aoR3H8.jpg" class="seat_type_logo" class="seat_type_logo"></label>					
 
-				<div class="seat_color">
-					<input type="radio" name="seat_color" id="black" required="" value="Чёрный" class="input_radio">
-					<label for="black" class="seat_color"><img src="https://sun9-6.userapi.com/c623900/v623900527/11485d/0aSs_aoR3H8.jpg" class="seat_type_logo"></label>
-				</div>
+					</div>
 
-				<div class="seat_color">
-					<input type="radio" name="seat_color" id="red" required="" value="Красный" class="input_radio">
-					<label for="red" class="seat_color"><img src="https://sun9-6.userapi.com/c623900/v623900527/11485d/0aSs_aoR3H8.jpg" class="seat_type_logo"></label>
-				</div>
+				</section>
 
-				<div class="seat_color">
-					<input type="radio" name="seat_color" id="green" required="" value="Зелёный" class="input_radio">
-					<label for="green" class="seat_color"><img src="https://sun9-6.userapi.com/c623900/v623900527/11485d/0aSs_aoR3H8.jpg" class="seat_type_logo"></label>
-				</div>
+				<section class="seat_color_select">
 
-				<div class="seat_color">
-					<input type="radio" name="seat_color" id="white" required="" value="Белый" class="input_radio">
-					<label for="white" class="seat_color"><img src="https://sun9-6.userapi.com/c623900/v623900527/11485d/0aSs_aoR3H8.jpg" class="seat_type_logo"></label>
-				</div>
+					<h2>ВЫБЕРИТЕ ЦВЕТ МАТЕРИАЛА</h2>
+
+					<div class="seat_color_select">
+
+						<div class="seat_color">
+							<input type="radio" name="seat_color" id="yellow" required="" value="Жёлтый" class="input_radio">
+							<label for="yellow" class="seat_color_name" style="color: yellow">Yellow</label>
+							<label for="yellow" class="seat_color"><img src="https://sun9-6.userapi.com/c623900/v623900527/11485d/0aSs_aoR3H8.jpg" class="seat_type_logo"></label>
+						</div>
+
+						<div class="seat_color">
+							<input type="radio" name="seat_color" id="black" required="" value="Чёрный" class="input_radio">
+							<label for="yellow" class="seat_color_name" style="color: black">Black</label>
+							<label for="black" class="seat_color"><img src="https://sun9-6.userapi.com/c623900/v623900527/11485d/0aSs_aoR3H8.jpg" class="seat_type_logo"></label>
+						</div>
+
+						<div class="seat_color">
+							<input type="radio" name="seat_color" id="red" required="" value="Красный" class="input_radio">
+							<label for="yellow" class="seat_color_name" style="color: red">Red</label>
+							<label for="red" class="seat_color"><img src="https://sun9-6.userapi.com/c623900/v623900527/11485d/0aSs_aoR3H8.jpg" class="seat_type_logo"></label>
+						</div>
+
+						<div class="seat_color">
+							<input type="radio" name="seat_color" id="green" required="" value="Зелёный" class="input_radio">
+							<label for="yellow" class="seat_color_name" style="color: green">Green</label>
+							<label for="green" class="seat_color"><img src="https://sun9-6.userapi.com/c623900/v623900527/11485d/0aSs_aoR3H8.jpg" class="seat_type_logo"></label>
+						</div>
+
+						<div class="seat_color">		
+							<input type="radio" name="seat_color" id="white" required="" value="Белый" class="input_radio">
+							<label for="yellow" class="seat_color_name" style="color: ">White</label>
+							<label for="white" class="seat_color"><img src="https://sun9-6.userapi.com/c623900/v623900527/11485d/0aSs_aoR3H8.jpg" class="seat_type_logo"></label>
+						</div>
+
+					</div>
+
+				</section>
 
 			</section>
 
 			<section class="submit">
 				<input type="submit" name="button" value="Заказать">
 			</section>
+
+			<?
+			/*$_SESSION['motocycle_type_select'] = $_POST['motocycle_type_select'];
+			$_SESSION['seat_cover_type'] = $_POST['seat_cover_type'];
+			$_SESSION['seat_color'] = $_POST['seat_color'];*/
+			?>
 		</form>
 
 	</div>
