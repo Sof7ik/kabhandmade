@@ -76,70 +76,31 @@ a.logo_a:hover, img.logo_img:hover {	/*Класс, привязанный к с�
 	box-shadow: 0px 0px 10px 2px black;
 }
 
-div.login > form {
+div.login {
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: flex-start;
-	align-items: center;
+	align-items: flex-start;
 }
 
-div.login > form > input.text {
-	width: 200px;
-	padding: 5px 10px;
-	margin-bottom: 5%;
-	font-size: 15px;
-	transition: all .2s;
-	color: black;
-}
-
-input.text:focus {
-	outline: 1px solid #BCFC99;
-	background-color: #BCFC99;
-	transition: all .2s;
-	color: white;
-	box-shadow: 0px 0px 50px 2px #BCFC99;
-}
-
-input.submit  {				/*Кнопка "ВОЙТИ"*/
+p.name > span {
 	font-weight: bold;
-	color: white;
-	background-color: #FF6F0E;
-	outline: 0;
-	border: 0;
-	padding: 10px 0px;
-	transition: all .2s;
-	margin-top: 2%;
-	width: 70%;
+	font-size: 25px;
 }
 
-input.submit:hover, a.submit:hover {
-	background-color: #FF6B59;
-	outline: 2px solid pink;
-	transition: all .2s;
-}
-
-input.submit:focus {
-	box-shadow: 0px 0px 10px 2px black;
-}
-
-a.submit {
+a.cart { /*стили для кнопочек портфолио, стоимость, услуги*/
+	margin-right: 15px;
 	text-decoration: none;
-	text-align: center;
-	background-color: #FF6F0E;
-	font-size: 14px;
-	outline: 0;
-	border: 0;
-	color: white;
-	padding: 10px 20px;
-	margin-top: 4%;
-	transition: all .3s;
+	color: black;
+	transition: all 0.4s;
+	font-size: 25px;
 }
 
-a.submit:hover {
-	border: 0;
-	outline: 0;
-	box-shadow: 0px 0px 10px 2px black;
-	transition: all .3s;
+a.cart:hover { /*стили для ховера кнопочек портфолио, стоимость, услуги*/
+	color: #FF573D;
+	border-bottom: 1px solid #FF823A;
+	padding-bottom: 5px;
+	transition: all 0.4s;
 }
 
 content {					/*Класс-контейнер для формы на странице*/
