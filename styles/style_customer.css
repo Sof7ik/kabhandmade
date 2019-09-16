@@ -12,34 +12,89 @@ html, body {
 	heigh: 100%;
 }
 
-h2 {
+h2, h3 {
 	text-align: center; 
-	margin-top: 1%; 
 }
 
-/*{
-	display: none;
-}*/
+label.seat_cover_type_name, 
+label.seat_color_name,
+label.anti_skid_stripes_yes_or_no,
+label.anti_skid_stripe_type,
+label.anti_skid_stripe_color
+{
+	text-align: center;
+	font-weight: bold;
+	/*display: none;*/
+	opacity: 0;
+}
 
+
+/*.input_radio {
+	display: none;
+}
+*/
 [type="radio"]:hover + label.seat_cover_type_name {
 	display: block;
+	opacity: 1;
+	transition: all .3s;
 }
 
 [type="radio"]:checked + label.seat_cover_type_name {
 	display: block;
+	opacity: 1;
+	outline: 1px solid red;
+	transition: all .3s;
 }
 
 [type="radio"]:hover + label.seat_color_name {
 	display: block;
+	opacity: 1;
+	transition: all .3s;
 }
 
 [type="radio"]:checked + label.seat_color_name {
 	display: block;
-
+	opacity: 1;
+	outline: 1px solid red;
+	transition: all .3s;
 }
 
-[type="radio"]:checked > label.seat_color_name {
+[type="radio"]:hover + label.anti_skid_stripes_yes_or_no {
+	display: block;
+	opacity: 1;
+	transition: all .3s;
+}
+
+[type="radio"]:checked + label.anti_skid_stripes_yes_or_no {
+	display: block;
+	opacity: 1;
+	outline: 1px solid red;
+	transition: all .3s;
+}
+
+[type="radio"]:hover + label.anti_skid_stripe_type {
+	display: block;
+	opacity: 1;
+	transition: all .3s;
+}
+
+[type="radio"]:checked + label.anti_skid_stripe_type {
+	display: block;
+	opacity: 1;
+	transition: all .3s;
+}
+
+[type="radio"]:hover + label.anti_skid_stripe_color {
+	display: block;
+	opacity: 1;
+	transition: all .3s;
+}
+
+[type="radio"]:checked + label.anti_skid_stripe_color {
+	display: block;
+	opacity: 1;
 	outline: 2px solid red;
+	transition: all .3s;
 }
 
 header {
@@ -48,7 +103,7 @@ header {
 	justify-content: space-between;
 	align-items: center;
 	background: linear-gradient(to top, #fefcea, #f1da36);
-	padding: 1%;
+	padding: 0.5%;
 }
 
 nav {
@@ -60,8 +115,7 @@ nav {
 
 img.logo_img {				/*Класс, привязанный к логотипам вк и handmade*/
 	display: block;
-	width: 100px;
-	outline: 2px solid black;
+	width: 60px;
 	transition: all .3s;
 }
 
@@ -71,7 +125,6 @@ a.logo_a {					/*Класс, привязанный к ссылкам внутр
 }
 
 a.logo_a:hover, img.logo_img:hover {	/*Класс, привязанный к ссылкам внутри логотипов вк и handmade*/
-	outline: 2px solid red;
 	transition: all .3s;
 	box-shadow: 0px 0px 10px 2px black;
 }
@@ -110,11 +163,15 @@ content {					/*Класс-контейнер для формы на стран�
 	align-items: flex-start;
 }
 
-img.seat_type_logo { 		/*Класс, привязанный к изображениям типа покрытия, цвета и т.д.*/
-	width: 100px;
+img.seat_cover_type_logo, img.anti_skid_stripes_yes_or_no_logo { 		/*Класс, привязанный к изображениям типа покрытия, цвета и т.д.*/
+	width: 150px;
 	transition: all .4s;
 	display: block;
 }
+
+/*img.seat_cover_type_logo:hover , img.anti_skid_stripes_yes_or_no_logo:hover {
+	transform: scale(1.4);
+}*/
 
 form.types {				/*Класс для главной формы на странице*/
 	background-image: url(/img/background.png);
@@ -150,69 +207,71 @@ section.motocycle_type_select {		/*Класс, привязанный к сек�
 	outline: 0;
 }
 
-.cover_and_color {
+section.cover_and_color, section.anti_skid_stripes {
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: space-around;
 	align-items: flex-start;
-	border-top: 3px solid black;
-	border-bottom: 3px solid black;
-	margin-top: 2%;
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+	margin-top: 0.3%;
 }
 
-div.seat_cover_type_select {
+section.seat_cover_type_select {
+	width: 50%;
+}
+
+section.seat_cover_type_select, section.anti_skid_stripes_yes_or_no {		/*Класс, привязанный к выбору типа покрытия*/
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	justify-content: center;
+	padding: 1% 0;
+	margin-top: 0.2%;
+}
+
+div.seat_cover_type_select_wrapper {
+	width: 55%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-items: flex-start;
+}
+
+div.seat_cover_type_select, div.anti_skid_stripes_yes_or_no {
 	display: flex;
 	flex-flow: column nowrap;
 	justify-content: center;
 	align-items: flex-start;
 }
 
-/*.input_radio, .under_hr {
- 	display: none;
-}
-*/
-
-div.seat_color {
+/*div.seat_color {
 	margin-right: 3%;
+}*/
+
+section.seat_color_select {
+	width: 50%;
 }
 
-div.seat_color > .input_radio {
-	margin-top: 15%;
-}
-
-section.seat_color_select { /*Класс, привязанный к выбору цвета покрытия*/
-	display: flex;
-	flex-flow: column wrap;
-	align-items: center;
-	justify-content: center;
-	padding: 1% 4%;
-	margin-top: 2%;
-}
-
-div.seat_color_select {
-	display: flex;
-	flex-flow: row wrap;
-	align-items: center;
-	justify-content: space-around;
-	margin-top: 2%;
-}
-
-section.seat_cover_type_select /*Класс, привязанный к выбору типа покрытия*/
-{
+section.seat_color_select, section.anti_skid_stripes_color_select { /*Класс, привязанный к выбору цвета покрытия*/
 	display: flex;
 	flex-flow: column wrap;
 	align-items: center;
 	justify-content: center;
 	padding: 1% 0;
+	margin-top: 0.2%;
+}
+
+div.seat_color_select {
+	width: 65%;
+}
+
+div.seat_color_select, div.anti_skid_stripes_color_select {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: space-around;
 	margin-top: 2%;
-}
-
-section.seat_color_select > h2:hover {
-
-}
-
-section.seat_cover_type_select > h2:hover {
-
 }
 
 div.seat_color {
@@ -226,24 +285,83 @@ input.seat_color {
 	margin-bottom: 20px;
 }
 
-label.seat_cover_type_name, label.seat_color_name {
+/*label.seat_color_name {
 	margin-bottom: 2%;
-	display: none;
 	font-weight: bold;
+	display: none;
+}*/
+
+img.seat_cover_color_logo, img.anti_skid_stripe_color_logo {
+	display: block;
+	width: 65px;
+	transition: all .4s;
 }
 
 .seat_type_logo:hover {
-	/*transform: scale(1.4);*/
 	cursor: pointer;
 	transition: all .4s;
-	/*-webkit-transform: rotate(360deg);*/
+}
+
+section.anti_skid_stripes_type {
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	justify-content: center;
+	padding: 1% 0;
+	margin-top: 0.2%;
+}
+
+div.anti_skid_stripes_type {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: space-around;
+	margin-top: 2%; 
 }
 
 section.submit {
+	margin-top: 1%;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+div.submit {
 	display: flex;
 	flex-flow: row nowrap;
-	justify-content: space-around;
-	align-items: center;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 35%;
+	outline: 3px dashed red;
+	padding: 0.5%;
+	font-size: 18px;
+	text-align: center;
+}
+
+div.submit > input.checkbox {
+	width: 30px; 
+	height: 23px;
+}
+
+div.submit > p > a.nothing {
+	text-decoration: none;
+	color: #00FF13;
+	font-size: 20px;
+	transition: all .3s;
+}
+
+div.submit > p {
+	font-size: 20px;
+}
+
+div.submit > p ~ span:hover {
+	color: #9300FF;
+}
+
+div.submit > p > a.nothing:hover {
+	color: #9300FF;
+	transition: all .3s;
 }
 
 section.submit > input {

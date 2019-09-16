@@ -76,6 +76,32 @@ a.logo_a:hover, img.logo_img:hover {	/*Класс, привязанный к с�
 	box-shadow: 0px 0px 10px 2px black;
 }
 
+div.sucsess {
+	display: flex;
+	flex-flow: column wrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+p.sucsess, p.borderedText, p.fail {
+	font-size: 25px;
+}
+
+p.sucsess {
+	color: #2BD738;
+}
+
+p.borderedText {
+	outline: 2px solid #6DFF78;
+	color: ;
+}
+
+p.fail {
+	outline: 2px solid #D22121;
+	color: #FD2C2C;
+	padding: 5px 30px;
+}
+
 div.login > form {
 	display: flex;
 	flex-flow: column nowrap;
@@ -83,10 +109,18 @@ div.login > form {
 	align-items: center;
 }
 
-div.login > form > input.text {
+div.auth_div {
+	display: flex; 
+	flex-flow: row nowrap; 
+	justify-content: space-around;
+	align-items: flex-start;
+	width: 100%;
+}
+
+
+div.login > form > div.auth_div > input.text {
 	width: 200px;
 	padding: 5px 10px;
-	margin-bottom: 5%;
 	font-size: 15px;
 	transition: all .2s;
 	color: black;
@@ -101,28 +135,31 @@ input.text:focus {
 }
 
 input.submit  {				/*Кнопка "ВОЙТИ"*/
-	font-weight: bold;
+	font-size: 15px;
 	color: white;
 	background-color: #FF6F0E;
 	outline: 0;
 	border: 0;
 	padding: 10px 0px;
 	transition: all .2s;
-	margin-top: 2%;
-	width: 70%;
+	width: 40%;
 }
 
-input.submit:hover, a.submit:hover {
-	background-color: #FF6B59;
-	outline: 2px solid pink;
-	transition: all .2s;
+input.submit:hover, button.submit:hover {
+	/*background-color: #FF6B59;*/
+/*	outline: 2px solid pink;
+	transition: all .2s;*/
+	border: 0;
+	outline: 0;
+	box-shadow: 0px 0px 10px 2px black;
+	transition: all .3s;
 }
 
 input.submit:focus {
 	box-shadow: 0px 0px 10px 2px black;
 }
 
-a.submit {
+button.submit {
 	text-decoration: none;
 	text-align: center;
 	background-color: #FF6F0E;
@@ -131,11 +168,10 @@ a.submit {
 	border: 0;
 	color: white;
 	padding: 10px 20px;
-	margin-top: 4%;
 	transition: all .3s;
 }
 
-a.submit:hover {
+button.submit:hover {
 	border: 0;
 	outline: 0;
 	box-shadow: 0px 0px 10px 2px black;

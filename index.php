@@ -1,5 +1,5 @@
 <?php
-require_once ('connection.php');
+require ('connection.php');
 session_start();
 
 if (isset($_SESSION['username']))
@@ -38,64 +38,91 @@ $loginSubmit = $_POST['button'];
 				<a href="https://vk.com/kabhandmade" class="logo_a"><img src="img/logos/vk_icon handpained.png" class="logo_img"></a>
 			</nav>
 
-			<div class="login">
-
-				<form action="" method="POST">
-
-					<input type="text" class="text" name="userLoginOrEmail" placeholder="Введите свой логин или email" required="" autocomplete="on">
-					<input type="password" class="text" name="userPassword" placeholder="Введите свой пароль" required="" autocomplete="on">
-					<input type="submit" name="button" value="ВОЙТИ" class="submit">
-					<a href="registration.php" class="submit">РЕГИСТРАЦИЯ</a>
-
-				</form>
-
-			</div>
 			<?
 
 				if (isset($loginSubmit)) {
 
-					$count = mysqli_query($link, "SELECT * FROM `users` WHERE (`login` = '$userLoginOrEmail' || `email` = '$userLoginOrEmail' || `tel` = '$userLoginOrEmail')  AND `password` = '$userPassword';");
+					$count = mysqli_query($link, "SELECT * FROM `users` WHERE (`login` = '$userLoginOrEmail' || `email` = '$userLoginOrEmail' || `tel` = '$userLoginOrEmail')  AND `password` = '$userPassword';");				
 
 					$countResult = mysqli_fetch_assoc($count); //получили ассоциативный массив
 
 					$userName = $countResult['name']; //присваиваем значение из БД для приветсвтвия
+					$userSurname = $countResult['surname'];
 					$userRole = $countResult['id_role']; //присваиваем значение из БД для редиректа
 					$userLogin = $countResult['login'];
+					$userId = $countResult['id_user'];
+
+					/*$roleNameSelect = mysqli_query($link, "SELECT * FROM `roles` WHERE `id_role` = '$userRole';");
+							
+					$roleNameSelectResult = mysqli_fetch_assoc($roleNameSelectResult);
+
+					$_SESSION['roleName'] = $roleNameSelectResult['role_name'];*/
 
 					$numRowsFromCount = mysqli_num_rows($count); //считаем количество строк
 
 
-					    if ($numRowsFromCount == 1) { //если есть одна строка, то
-
-					        echo "<p>Логин и пароль верны!</p>";
-					        $_SESSION['username'] = $userName;
-					        $_SESSION['role'] = $userRole;      
-					        $_SESSION['login'] = $userLogin;
-
-					        /*$query = mysqli_query($link, "SELECT `role_name` FROM `roles` WHERE `id_role` = $userRole");
-							$result = mysqli_fetch_assoc($query);
-							$_SESSION['role_name'] = $result['name'];*/
+					    if ($numRowsFromCount == 1) { //если есть одна строка,
 
 					        if ($countResult['id_role'] == 1) {
-					            echo "<p class='textInRamke'>Привет, " . $userName . "! Сейчас Вы будете перенаправлены на страницу заказа!</p>";
-					            echo '<meta http-equiv="refresh" content="3;customer.php">';
+					        	echo "<div class='sucsess'>";
+						        	echo "<p class='sucsess'>Логин и пароль верны!</p>";
+						        	$_SESSION['username'] = $userName;
+						        	$_SESSION['surname'] = $$userSurname;
+						        	$_SESSION['role'] = $userRole;      
+						        	$_SESSION['login'] = $userLogin;
+						        	$_SESSION['userId'] = $userId;
+						            echo "<p class='borderedText'>Привет, " . $userName . "! Сейчас Вы будете перенаправлены на страницу заказа!</p>";
+						            //echo $_SESSION['roleName'];
+						        echo"</div>";
+					            echo '<meta http-equiv="refresh" content="5;customer.php">';
 					        }
 
 					        if ($countResult['id_role'] == 2) {
-					            echo "<p class='textInRamke'>Привет, " . $userName . "! Сейчас Вы будете перенаправлены на страницу администратора!</p>";
-					            echo '<meta http-equiv="refresh" content="3;admin.php">';
+					        	echo "<div class='sucsess'>";
+						        	echo "<p class='sucsess'>Логин и пароль верны!</p>";
+						        	$_SESSION['username'] = $userName;
+						        	$_SESSION['surname'] = $$userSurname;
+						        	$_SESSION['role'] = $userRole;      
+						        	$_SESSION['login'] = $userLogin;
+						        	$_SESSION['userId'] = $userId;
+						            echo "<p class='borderedText'>Привет, " . $userName . "! Сейчас Вы будете перенаправлены на страницу администратора!</p>";
+						        echo"</div>";
+					            echo '<meta http-equiv="refresh" content="5;admin.php">';
 					        }
 
 					        if (empty($countResult['id_role'])) {
-					            echo 'Логин и пароль неправильные!';
+					            echo "<p class='fail'>Логин и пароль неправильные!</p>";
 					        }
 					    }
 
-					    else {
-					        echo "<p class='warning'>Логин и пароль неверны!</p>";
-					    }
+				    else {
+				        echo "<p class='fail'>Логин и пароль неверны!</p>";
+				    }
 				}
 			?>
+
+			<div class="login">
+
+				<form action="" method="POST" >
+
+					<div class="auth_div" style="margin-bottom: 2%;">
+
+						<input type="text" class="text" name="userLoginOrEmail" placeholder="Введите свой логин или email" required="" autocomplete="on" style="margin-right: 1%;">
+						<input type="password" class="text" name="userPassword" placeholder="Введите свой пароль" required="" autocomplete="on">
+
+					</div>
+
+					<div class="auth_div">
+
+						<input type="submit" name="button" value="ВОЙТИ" class="submit">
+						<button href="registration.php" class="submit">РЕГИСТРАЦИЯ</button>
+
+					</div>
+
+				</form>
+
+			</div>
+
 		</header>
 
 	<div class="content">
@@ -171,6 +198,124 @@ $loginSubmit = $_POST['button'];
 							<input type="radio" name="seat_color" id="white" required="" value="Белый" class="input_radio">
 							<label for="yellow" class="seat_color_name" style="color: ">White</label>
 							<label for="white" class="seat_color"><img src="img/seat_color/seat_cover_color/Белый.jpg" class="seat_type_logo"></label>
+						</div>
+
+					</div>
+
+				</section>
+
+			</section>
+
+			<h2 style="	color: white;"><span style="color: ">ВЫБЕРИТЕ НАЛИЧИЕ, ТИП И ЦВЕТ</span> <span>АНТИСКОЛЬЗЯЩИХ ПОЛОС</span></h2>
+
+			<section class="cover_and_color">
+
+				<section class="seat_cover_type_select">
+
+					<h2>ВЫБЕРИТЕ НАЛИЧИЕ АНТИСКОЛЬЗЯЩИХ ПОЛОС</h2>
+
+					<div class="seat_cover_type_select">
+
+						<input type="radio" name="anti_skid_stripe_yes_or_no" id="anti_skid_stripe_yes" required="" value="Есть" class="input_radio">	
+
+						<label for="anti_skid_stripe_yes" class="seat_cover_type_name">Есть</label>	
+						
+						<label for="anti_skid_stripe_yes" class="seat_type"><img src="https://sun9-6.userapi.com/c623900/v623900527/11485d/0aSs_aoR3H8.jpg" class="seat_type_logo"></label>
+
+					</div>
+
+					<div class="seat_cover_type_select">
+
+						<input type="radio" name="anti_skid_stripe_yes_or_no" id="anti_skid_stripe_no" required="" value="Нет" class="input_radio">
+
+						<label for="anti_skid_stripe_no" class="seat_cover_type_name">Нет</label>
+						
+						<label for="anti_skid_stripe_no" style="margin-bottom: 3.5%;" class="seat_type"><img src="https://sun9-6.userapi.com/c623900/v623900527/11485d/0aSs_aoR3H8.jpg" class="seat_type_logo" class="seat_type_logo"></label>					
+
+					</div>
+
+				</section>
+
+				<section class="seat_color_select">
+
+					<h2>ВЫБЕРИТЕ ТИП АНТИСКОЛЬЗЯЩИХ ПОЛОС</h2>
+
+					<div class="seat_color_select">
+
+						<div class="seat_color">
+							<input type="radio" name="anti_skid_stripe_type" id="anti_skid_stripe_сloth" required="" value="Матерчатые" class="input_radio">
+							<label for="anti_skid_stripe_сloth" class="seat_color_name">Матерчатые</label>
+							<label for="anti_skid_stripe_сloth" class="seat_color"><img src="img\anti_skid_stripe\cloth\cloth_colors\green.png" class="seat_type_logo" style="width: 200px;"></label>
+						</div>
+
+						<div class="seat_color">
+							<input type="radio" name="anti_skid_stripe_type" id="anti_skid_stripe_PVC1" required="" value="ПВХ галочка" class="input_radio">
+							<label for="anti_skid_stripe_PVC1" class="seat_color_name">ПВХ галочка</label>
+							<label for="anti_skid_stripe_PVC1" class="seat_color"><img src="img\anti_skid_stripe\PVC1\PVC1_colors\white.png" class="seat_type_logo"></label>
+						</div>
+
+						<div class="seat_color">
+							<input type="radio" name="anti_skid_stripe_type" id="anti_skid_stripe_PVC2" required="" value="ПВХ Закруглённый" class="input_radio">
+							<label for="anti_skid_stripe_PVC2" class="seat_color_name">ПВХ Закруглённый</label>
+							<label for="anti_skid_stripe_PVC2" class="seat_color"><img src="img\anti_skid_stripe\PVC2\PVC2_colors\white.png" class="seat_type_logo"></label>
+						</div>
+
+						<div class="seat_color">
+							<input type="radio" name="anti_skid_stripe_type" id="anti_skid_stripe_PVC3" required="" value="ПВХ Ромб" class="input_radio">
+							<label for="anti_skid_stripe_PVC3" class="seat_color_name">ПВХ Ромб</label>
+							<label for="anti_skid_stripe_PVC3" class="seat_color"><img src="img\anti_skid_stripe\PVC3\PVC3_colors\white.png" class="seat_type_logo"></label>
+						</div>
+
+					</div>
+
+				</section>
+
+				<section class="seat_color_select">
+
+					<h2>ВЫБЕРИТЕ ЦВЕТ АНТИСКОЛЬЗЯЩИХ ПОЛОС</h2>
+
+					<div class="seat_color_select">
+
+						<div class="seat_color">
+							<input type="radio" name="anti_skid_stripe_color" id="anti_skid_stripe_blue" required="" value="Синий" class="input_radio">
+							<label for="anti_skid_stripe_blue" class="seat_color_name" style="color: #021536">Blue</label>
+							<label for="anti_skid_stripe_blue" class="seat_color"><img src="img/seat_color/seat_cover_color/Синий.jpg" class="seat_type_logo"></label>
+						</div>
+
+						<div class="seat_color">
+							<input type="radio" name="anti_skid_stripe_color" id="anti_skid_stripe_red" required="" value="Красный" class="input_radio">
+							<label for="anti_skid_stripe_red" class="seat_color_name" style="color: red">Red</label>
+							<label for="anti_skid_stripe_red" class="seat_color"><img src="img/seat_color/seat_cover_color/Красный.jpg" class="seat_type_logo"></label>
+						</div>
+
+						<div class="seat_color">
+							<input type="radio" name="anti_skid_stripe_color" id="anti_skid_stripe_yellow" required="" value="Жёлтый" class="input_radio">
+							<label for="anti_skid_stripe_yellow" class="seat_color_name" style="color: yellow">Yellow</label>
+							<label for="anti_skid_stripe_yellow" class="seat_color"><img src="img/seat_color/seat_cover_color/Жёлтый.jpg" class="seat_type_logo"></label>
+						</div>
+
+						<div class="seat_color">
+							<input type="radio" name="anti_skid_stripe_color" id="anti_skid_stripe_black" required="" value="Чёрный" class="input_radio">
+							<label for="anti_skid_stripe_black" class="seat_color_name" style="color: black">Black</label>
+							<label for="anti_skid_stripe_black" class="seat_color"><img src="img/seat_color/seat_cover_color/Чёрный.jpg" class="seat_type_logo"></label>
+						</div>
+
+						<div class="seat_color">
+							<input type="radio" name="anti_skid_stripe_color" id="anti_skid_stripe_orange" required="" value="Оранжевый" class="input_radio">
+							<label for="anti_skid_stripe_orange" class="seat_color_name" style="color: #eb4b27">Orange</label>
+							<label for="anti_skid_stripe_orange" class="seat_color"><img src="img/seat_color/seat_cover_color/Оранжевый.jpg" class="seat_type_logo"></label>
+						</div>			
+
+						<div class="seat_color">
+							<input type="radio" name="anti_skid_stripe_color" id="anti_skid_stripe_green" required="" value="Зелёный" class="input_radio">
+							<label for="anti_skid_stripe_green" class="seat_color_name" style="color: green">Green</label>
+							<label for="anti_skid_stripe_green" class="seat_color"><img src="img/seat_color/seat_cover_color/Зелёный.jpg" class="seat_type_logo"></label>
+						</div>
+
+						<div class="seat_color">		
+							<input type="radio" name="anti_skid_stripe_color" id="anti_skid_stripe_white" required="" value="Белый" class="input_radio">
+							<label for="anti_skid_stripe_white" class="seat_color_name" style="color: white">White</label>
+							<label for="anti_skid_stripe_white" class="seat_color"><img src="img/seat_color/seat_cover_color/Белый.jpg" class="seat_type_logo"></label>
 						</div>
 
 					</div>

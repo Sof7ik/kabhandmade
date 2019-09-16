@@ -1,75 +1,120 @@
 <?php
-require_once ('connection.php');
 session_start();
-
-/*if (!isset($_SESSION['seat_cover_type'])) {
-	header('Location: index.php');
-}*/
-
-/*$value = $_POST['motocycle_type_select'];*/
-$value = $_POST['motocycle_type_select'];
-//Берем значение из селекта (хз, как оно так работет, но у Мишы работало, значит и у меня заработает. Миша aka HighTechnologiesHere)
-
-$seat_cover_type = $_POST['seat_cover_type'];
-
-$seat_color = $_POST['seat_color'];
-
-if(isset($_POST['moto'])){
-
-	$send = mysqli_query($link, 
-		"INSERT INTO `seats` VALUES (NULL, 1, 
-			'$moto', 
-			'$type',
-			'$color'
-		);"
-	);
-}
-
-if ($send) {
-	echo "Заказ сделан! Сейчас обратно будет";
-	echo "<META HTTP-EQUIV='REFRESH' CONTENT='3;URL=index.php'>";
-}
-
-else {
-	echo "Не удалось заказать... Попробуйте позже";
-	echo "<a href='index.php'>НА ГЛАВНУЮ</a>";
-}
-
-if (isset($_POST['discard'])) {
-	echo "<META HTTP-EQUIV='REFRESH' CONTENT='0;URL=index.php'>";
-}
+require ('connection.php');
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>KaB HandMade - перетяжка сидений мотоциклов</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="style_send.css">
-	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
+	<title></title>
+	<meta charset='utf-8'>
+	<link rel="stylesheet" type="text/css" href="styles/style_customer.css">
 </head>
 <body>
 
-<h1>ПОДТВЕРДИТЕ ВАШ ВЫБОР</h1>
-
-<form action="" method="POST">
-	Мотоцикл - <input type="text" name="moto" required value="<?echo $value?>"> <br>
-	Тип материала - <input type="text" name="type" required value="<?echo $seat_cover_type?>"> <br>
-	Цвет материала - <input type="text" name="color" required value="<?echo $seat_color?>"> <br>
-
-	<input type="submit" value="ДА, ВСЕ ПРАВИЛЬНО" name="ok">
-	<input type="submit" value="ВЕРНУТЬСЯ К ВЫБОРУ" name="discard">
-
-	<?
-	echo "<META HTTP-EQUIV='REFRESH' CONTENT='1000;URL=index.php'>";
-	$_POST['moto'] = $moto;
-	$_POST['type'] = $type;
-	$_POST['color'] = $color;
-	echo "$moto";
-	echo "$type";
-	echo "$color";
-	?>
-</form>
-
 </body>
 </html>
+
+<?/*htmlentities(mysqli_real_escape_string($link, $message_init))*/
+
+$_SESSION['userId'] = $userId;
+$_SESSION['username'] = $userName;
+$_SESSION['surname'] = $userSurname;
+
+/*$moto = $_POST['motocycle_type_select'];*/
+$moto = htmlentities(mysqli_real_escape_string($link, $_POST['motocycle_type_select']));
+//Берем значение из селекта (хз, как оно так работет, но у Мишы работало, значит и у меня заработает. Миша aka HighTechnologiesHere)
+
+//$seat_cover_type = $_POST['seat_cover_type'];
+$seat_cover_type = htmlentities(mysqli_real_escape_string($link, $_POST['seat_cover_type']));
+
+//$seat_cover_color = $_POST['seat_cover_color'];
+$seat_cover_color = htmlentities(mysqli_real_escape_string($link, $_POST['seat_cover_color']));
+
+//$anti_skid_stripes_yes_or_no = $_POST['anti_skid_stripes_yes_or_no'];
+$anti_skid_stripes_yes_or_no = htmlentities(mysqli_real_escape_string($link, $_POST['anti_skid_stripes_yes_or_no']));
+
+//$anti_skid_stripe_type = $_POST['anti_skid_stripe_type'];
+$anti_skid_stripe_type = htmlentities(mysqli_real_escape_string($link, $_POST['anti_skid_stripe_type']));
+
+//$anti_skid_stripe_color = $_POST['anti_skid_stripe_color'];
+$anti_skid_stripe_color = htmlentities(mysqli_real_escape_string($link, $_POST['anti_skid_stripe_color']));
+
+if ($anti_skid_stripe_type == "" || $anti_skid_stripes_yes_or_no == "Нет") {
+	$anti_skid_stripe_type = "Нет";
+}
+
+if ($anti_skid_stripe_color == "" || $anti_skid_stripes_yes_or_no == "Нет") {
+	$anti_skid_stripe_color = "Нет";
+}
+
+if ($anti_skid_stripes_yes_or_no == "Есть" || $anti_skid_stripe_type == "") {
+	$anti_skid_stripe_type = "Матерчатые";
+}
+
+if ($anti_skid_stripes_yes_or_no == "Есть" || $anti_skid_stripe_color == "") {
+	$anti_skid_stripe_color = "Чёрный";
+}
+
+echo "Название мотоцикла - " . $moto . "<br>";
+echo "Тип ткани - " . $seat_cover_type . "<br>";
+echo "Цвет ткани - " . $seat_cover_color . "<br>";
+echo "Полосы антискольжения - " . $anti_skid_stripes_yes_or_no . "<br>";
+echo "Тип полос антискольжения - " . $anti_skid_stripe_type . "<br>";
+echo "Цвет полос антискольжения - " . $anti_skid_stripe_color . "<br>";
+
+echo "<br>";
+echo "<br>";
+echo "<br>";
+echo "Фамилия - " . $_SESSION['surname'];
+echo "<br>";
+echo "Роль - " . $_SESSION['role'];
+echo "<br>";
+echo "ID user - " . $_SESSION['userId'];
+echo "<br>";
+
+echo "<a class='cart' href='customer.php'>НА ГЛАВНУЮ</a>";
+
+/*$query = "INSERT INTO `seats`(
+`id_seat`, 
+`id_user`, 
+`name`, 
+`surname`,
+`Мотоцикл`, 
+`Тип покрытия`, 
+`Цвет покрытия`, 
+`Полоски антискольжения`, 
+`Тип полосок антискольжения`, 
+`Цвет полосок антискольжения`
+) 
+VALUES (
+NULL,
+'$userId',
+'$userName',
+'$userSurname',
+'$moto', 
+'$seat_cover_type', 
+'$seat_cover_color', 
+'$anti_skid_stripes_yes_or_no', 
+'$anti_skid_stripe_type', 
+'$anti_skid_stripe_color');";
+
+$send = mysqli_query($link, $query);
+
+if ($send) {
+	echo "Заказ сделан! Сейчас обратно будет";
+	echo "<META HTTP-EQUIV='REFRESH' CONTENT='3;URL=customer.php'>";
+}
+
+else {
+	echo "<br>";
+	echo "<br>";
+	echo "<br>";
+	echo "Не удалось заказать... Попробуйте позже";
+
+	echo mysqli_error($query);
+	echo "Переменная send " . var_dump($send);
+
+	echo "<br>";
+	echo "<a class='cart' href='customer.php'>НА ГЛАВНУЮ</a>";
+}*/
+?>
