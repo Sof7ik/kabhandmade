@@ -1,23 +1,130 @@
+<?
+require ('connection.php');
+session_start();
+
+if (!isset($_SESSION['username'])) {
+	echo '<meta http-equiv="refresh" content="0;index.php">'; //идем на главную страницу
+	exit;
+}
+
+$userName = $_SESSION['username'];
+$userSurname = $_SESSION['surname'];
+$userLogin = $_SESSION['login'];
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Корзина</title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="styles/style_cart.css">
 </head>
 <body>
-<p style="width: 300px;">Жил-был в лесу вежливый лось. И, действительно, лось был очень вежлив,
-вот только имел он одну маленькую слабость — всех зверей в лесу
-перетр*хал. И медведя, и волка, и лисицу, всех. Остался только один
-заяц, до которого вежливый лось еще не успел добраться. Бедняга заяц
-и днями, и ночами прячется от лося, боится. Как-то вечером решил заяц
-схоронится в норе у бобра.
-— Послушай, бобер, — говорит заяц, — дай я у тебя в норе заночую.
-Лось к тебе ведь уже заходил, авось второй раз не сунется.
-Пустил бобер, но на всякий случай предупредил:
-— Ты засунь себе, — говорит, — в зад морковку, мало ли что.
-Заяц так и сделал…
-Вот уж луна на небе засияла, звезды замерцали, заяц медленно
-погружается в сон… И вдруг… Чпок!
-— Добрый вечер!</p>
+
+<header>
+
+	<nav>
+		<a href="customer.php" class="logo_a" style="margin-right: 15%"><img src="img/logos/logo.png" class="logo_img"></a>
+		<a href="https://vk.com/kabhandmade" class="logo_a"><img src="img/logos/vk_icon.png" class="logo_img"></a>
+	</nav>
+
+	<nav>
+		<a href="galery.php" class="cart" style="text-shadow: #B389D8 0 0 10px;">ГАЛЕРЕЯ ЦВЕТОВ, МАТЕРИАЛОВ</a>
+	</nav>
+
+	<div class="login">
+		
+		<?
+			echo "<p class='name'>Вы вошли как <a href='cabinet.php'>" . $_SESSION['username'] . "</a></p>";
+			echo "Фамилия - " . $_SESSION['surname'];
+			echo "<br>";
+			echo "Роль - " . $_SESSION['role'];
+			echo "<br>";
+			echo "ID User - " . $_SESSION['userId'];
+			echo "<br>";
+			echo "Login - " . $_SESSION['login'];
+		?>
+
+		<div style="display: flex; flex-flow: row wrap; justify-content: center">
+
+			<?
+			if ($_SESSION['role'] == 2) {
+				echo '<a href="admin.php" class="cart">Админ</a>';//идем на страницу админа
+				
+			}
+			?>
+
+			<a href="customer.php" class="cart">ГЛАВНАЯ</a>
+			<a href="logout.php" class="cart">ВЫХОД</a>
+
+		</div>
+
+	</div>
+
+</header>
+
+<div class="content">
+
+	<?
+
+		$count = mysqli_query($link, "SELECT * FROM `seats` WHERE (`name` = '$userName' && `surname` = '$userSurname');");				
+
+		$countResult = mysqli_fetch_assoc($count);
+
+		$userName = $countResult['name'];
+		$userSurname = $countResult['surname'];
+		$moto = $countResult['moto'];
+		$coverType = $countResult['coverType'];
+		$coverColor = $countResult['coverColor'];
+		$antiSkidStripes = $countResult['antiSkidStripes'];
+		$antiSkidStripesType = $countResult['antiSkidStripesType'];
+		$antiSkidStripesColor = $countResult['antiSkidStripesColor'];
+
+
+		$numRowsFromCount = mysqli_num_rows($count); //считаем количество строк
+		if ($numRowsFromCount > 0) {
+			?>
+
+			<table class="tableResult" border="2px solid black" cellpadding="10px" cellspacing="10px" style="margin: unset; padding: unset">
+				<tr>
+					<th>Мотоцикл</th>
+					<th>Тип покрытия</th>
+					<th>Цвет покрытия</th>
+					<th>Полосы есть/нет</th>
+					<th>Тип полос</th>
+					<th>Цвет полос</th>
+					<!-- 
+					<th>Заголовок</th>
+					<th>Заголовок</th>
+					<th>Заголовок</th>
+					<th>Заголовок</th>
+					<th>Заголовок</th>
+					<th>Заголовок</th> 
+					-->
+				</tr>
+				<?
+					for ($i = 0; $i < $count; $i++) {
+						echo "<tr>";
+							echo"<td>$moto</th>";
+							echo"<td>$coverType</td>";
+							echo"<td>$coverColor</td>";
+							echo"<td>$antiSkidStripes</td>";
+							echo"<td>$antiSkidStripesType</td>";
+							echo"<td>$antiSkidStripesColor</td>";
+						echo "</tr>";
+					}
+				?>	
+			</table>
+
+			<?
+		}
+		else if ($numRowsFromCount <= 0) {
+			echo "<p class='fail'>Вы еще не делали заказов!</p>";
+		}
+		
+?>
+
+</div>
+
 </body>
 </html>
