@@ -14,11 +14,11 @@ require ('connection.php');
 </body>
 </html>
 
-<?/*htmlentities(mysqli_real_escape_string($link, $message_init))*/
+<?php
 
-$_SESSION['userId'] = $userId;
-$_SESSION['username'] = $userName;
-$_SESSION['surname'] = $userSurname;
+$userId = $_SESSION['userId'];
+$userName = $_SESSION['username'] ;
+$userSurname = $_SESSION['surname'];
 
 /*$moto = $_POST['motocycle_type_select'];*/
 $moto = htmlentities(mysqli_real_escape_string($link, $_POST['motocycle_type_select']));
@@ -65,6 +65,8 @@ echo "Цвет полос антискольжения - " . $anti_skid_stripe_c
 echo "<br>";
 echo "<br>";
 echo "<br>";
+echo "Имя - " . $_SESSION['username'];
+echo "<br>";
 echo "Фамилия - " . $_SESSION['surname'];
 echo "<br>";
 echo "Роль - " . $_SESSION['role'];
@@ -74,7 +76,7 @@ echo "<br>";
 
 echo "<a class='cart' href='customer.php'>НА ГЛАВНУЮ</a>";
 
-/*$query = "INSERT INTO `seats`(
+$query = "INSERT INTO `seats`(
 `id_seat`, 
 `id_user`, 
 `name`, 
@@ -116,5 +118,5 @@ else {
 
 	echo "<br>";
 	echo "<a class='cart' href='customer.php'>НА ГЛАВНУЮ</a>";
-}*/
+}
 ?>

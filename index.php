@@ -1,6 +1,6 @@
 <?php
-require ('connection.php');
 session_start();
+require ('connection.php');
 
 if (isset($_SESSION['username']))
 {
@@ -67,7 +67,7 @@ $loginSubmit = $_POST['button'];
 					        	echo "<div class='sucsess'>";
 						        	echo "<p class='sucsess'>Логин и пароль верны!</p>";
 						        	$_SESSION['username'] = $userName;
-						        	$_SESSION['surname'] = $$userSurname;
+						        	$_SESSION['surname'] = $userSurname;
 						        	$_SESSION['role'] = $userRole;      
 						        	$_SESSION['login'] = $userLogin;
 						        	$_SESSION['userId'] = $userId;
@@ -81,7 +81,7 @@ $loginSubmit = $_POST['button'];
 					        	echo "<div class='sucsess'>";
 						        	echo "<p class='sucsess'>Логин и пароль верны!</p>";
 						        	$_SESSION['username'] = $userName;
-						        	$_SESSION['surname'] = $$userSurname;
+						        	$_SESSION['surname'] = $userSurname;
 						        	$_SESSION['role'] = $userRole;      
 						        	$_SESSION['login'] = $userLogin;
 						        	$_SESSION['userId'] = $userId;
@@ -108,7 +108,7 @@ $loginSubmit = $_POST['button'];
 					<div class="auth_div" style="margin-bottom: 2%;">
 
 						<input type="text" class="text" name="userLoginOrEmail" placeholder="Введите свой логин или email" required="" autocomplete="on" style="margin-right: 1%;">
-						<input type="password" class="text" name="userPassword" placeholder="Введите свой пароль" required="" autocomplete="on">
+						<input type="password" id="password" class="text" name="userPassword" placeholder="Введите свой пароль" required="" autocomplete="on">
 
 					</div>
 

@@ -186,14 +186,6 @@ section.motocycle_type_select {		/*Класс, привязанный к сек�
 	justify-content: center;
 }
 
-/*select {					/*Класс, привязанный к выбору мотика
-	border-top: 3px solid #00F3FF;
-	border-left: 3px solid #FF00F7;
-	border-bottom: 3px solid #00FF6C;
-	border-right: 3px solid #B900FF;
-	width: 200px;
-}*/
-
 .input_motocycle_type_select {
 	width: 300px; 
 	height: 30px;

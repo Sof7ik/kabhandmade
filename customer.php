@@ -1,5 +1,5 @@
 <?php
-require_once ('connection.php');
+require ('connection.php');
 session_start();
 
 if (!isset($_SESSION['username'])) {
@@ -7,10 +7,11 @@ if (!isset($_SESSION['username'])) {
 	exit;
 }
 
-/*if ($_SESSION['role'] == 2) {
-	echo '<meta http-equiv="refresh" content="0;admin.php">';//идем на страницу админа
-	exit;
-}*/
+$userName = $_SESSION['username'];
+$userSurname = $_SESSION['surname'];
+$userRole = $_SESSION['role'];
+$userLogin = $_SESSION['login'];
+$userId = $_SESSION['userId'];
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +44,7 @@ if (!isset($_SESSION['username'])) {
 					/*$query1 = "SELECT 'role_name' FROM `roles` WHERE `id_role` = $_SESSION['role'];";
 					$query = mysqli_query($link, $query1);
 					$result = mysqli_fetch_assoc($query);*/
-					echo "<p class='name'>Вы вошли как <span>" . $_SESSION['username'] . "</span></p>";
+					echo "<p class='name'>Вы вошли как <a href='cabinet.php'><span>" . $_SESSION['username'] . "</span></a></p>";
 					echo "Фамилия - " . $_SESSION['surname'];
 					echo "<br>";
 					echo "Роль - " . $_SESSION['role'];
