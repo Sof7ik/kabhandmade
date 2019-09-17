@@ -81,12 +81,12 @@ $query = "INSERT INTO `seats`(
 `id_user`, 
 `name`, 
 `surname`,
-`Мотоцикл`, 
-`Тип покрытия`, 
-`Цвет покрытия`, 
-`Полоски антискольжения`, 
-`Тип полосок антискольжения`, 
-`Цвет полосок антискольжения`
+`moto`, 
+`coverType`, 
+`coverColor`, 
+`antiSkidStripes`, 
+`antiSkidStripesType`, 
+`antiSkidStripesColor`
 ) 
 VALUES (
 NULL,

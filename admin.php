@@ -17,49 +17,71 @@ if ($_SESSION['role'] == 1) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Админ</title>
+	<title>Админ - KaB HandMade</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="styles/style_customer.css">
-	<link rel="stylesheet" type="text/css" href="style/style_admin.css">
+	<link rel="icon" href="favicon.ico">
+	<!-- <link rel="stylesheet" type="text/css" href="styles/style_customer.css"> -->
+	<link rel="stylesheet" type="text/css" href="style/style_cart.css">
 </head>
 <body>
 
 	<?
-	/*$_SESSION['login'] = $userLogin;
-	$query = mysqli_query($link, "SELECT `name`, `surname`, `email`, `tel` FROM `users` WHERE `login` = '$userLogin';");
 
-	if ($query) {
-		echo "1";
-	}
-	$queryResult = mysqli_fetch_assoc($query);
+	$selectOrders = mysqli_query($link, 
+		"SELECT 
+			`name`, 
+			`surname`, 
+			`tel`, 
+			`email`, 
+			`coverType`, 
+			`coverColor`, 
+			`antiSkidStripes`, 
+			`antiSkidStripesType`, 
+			`antiSkidStripesColor` 
 
-	$name = $queryResult['name'];
-	$surname = $queryResult['surname'];
-	$email = $queryResult['email'];
-	$tel = $queryResult['tel'];
+			FROM `users`, `seats` 
 
-	echo $name;*/
+			WHERE seats.id_user = users.id_user");
 	?>
 
-	<table border="1px solid black" cellpadding="10px" cellspacing="10px">
+	<table border="1px solid black" cellpadding="10px" cellspacing="10px" class="tableResult">
 
 		<tr>
 			<th>Имя</th>
 			<th>Фамилия</th>
-			<th>Почта</th>
 			<th>Телефон</th>
+			<th>Почта</th>
+			<th>Тип покрытия</th>
+			<th>Цвет покрытия</th>
+			<th>Полоски есть/нет</th>
+			<th>Тип полосок</th>
+			<th>Цвет полосок</th>
 		</tr>
 
 		<?
-			
-			echo "
-			<tr>
-				<td><?echo $name?></td>
-				<td><?echo $surname?></td>
-				<td><?echo $email?></td>
-				<td><?echo $tel?></td>
-			</tr>
-			"
+			while ($selectOrdersResult = mysqli_fetch_assoc($selectOrders)) {
+				$name = $selectOrdersResult['name'];
+				$surname = $selectOrdersResult['surname'];
+				$tel = $selectOrdersResult['tel'];
+				$email = $selectOrdersResult['email'];
+				$coverType = $selectOrdersResult['coverType'];
+				$coverColor = $selectOrdersResult['coverColor'];
+				$antiSkidStripes = $selectOrdersResult['antiSkidStripes'];
+				$antiSkidStripesType = $selectOrdersResult['antiSkidStripesType'];
+				$antiSkidStripesColor = $selectOrdersResult['antiSkidStripesColor'];
+				echo "<tr>";
+					echo "<td class='id'>$name</td>";
+					echo "<td class='id'>$surname</td>";
+					echo "<td class='id'>$tel</td>";
+					echo "<td class='id'>$email</td>";
+					echo"<td class='class2'>$coverType</td>";
+					echo"<td class='class3'>$coverColor</td>";
+					echo"<td class='class4'>$antiSkidStripes</td>";
+					echo"<td class='class5'>$antiSkidStripesType</td>";
+					echo"<td class='class6'>$antiSkidStripesColor</td>";
+				echo "</tr>";
+			}
+			mysqli_free_result($selectOrders);
 		?>
 
 	</table>

@@ -1,4 +1,4 @@
-*:not(.tableResult) {
+* {
 	padding: 0;
 	margin: 0;
 	font-family: 'Roboto Condensed', sans-serif;
@@ -79,9 +79,43 @@ a.cart:hover { /*стили для ховера кнопочек портфол�
 	transition: all 0.4s;
 }
 
+div.content {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: flex-start;
+	background-image: url(/img/ca.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
 table.tableResult {
-	margin: unset;
+	margin: 2% 0;
 	padding: unset;
+	border: 2px solid #954CFF; 
+}
+
+.tableResult th {
+	margin: 2%;
+	padding: 1%;
+	width: 200px;
+	background-color: #ADADAD;
+	font-size: 15px;
+}
+
+.tableResult td {
+	padding: 1%;
+	background-color: #D8D5DB;
+	text-align: center;
+}
+
+td.id {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+td.class1 {
+	background-color: #6A82F5;
 }
 
 p.fail {

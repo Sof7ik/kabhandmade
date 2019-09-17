@@ -10,6 +10,7 @@ if (!isset($_SESSION['username'])) {
 $userName = $_SESSION['username'];
 $userSurname = $_SESSION['surname'];
 $userLogin = $_SESSION['login'];
+$userRole = $_SESSION['role'];
 
 ?>
 <!DOCTYPE html>
@@ -36,13 +37,6 @@ $userLogin = $_SESSION['login'];
 		
 		<?
 			echo "<p class='name'>Вы вошли как <a href='cabinet.php'>" . $_SESSION['username'] . "</a></p>";
-			echo "Фамилия - " . $_SESSION['surname'];
-			echo "<br>";
-			echo "Роль - " . $_SESSION['role'];
-			echo "<br>";
-			echo "ID User - " . $_SESSION['userId'];
-			echo "<br>";
-			echo "Login - " . $_SESSION['login'];
 		?>
 
 		<div style="display: flex; flex-flow: row wrap; justify-content: center">
@@ -67,52 +61,53 @@ $userLogin = $_SESSION['login'];
 
 	<?
 
-		$count = mysqli_query($link, "SELECT * FROM `seats` WHERE (`name` = '$userName' && `surname` = '$userSurname');");				
-
-		$countResult = mysqli_fetch_assoc($count);
-
-		$userName = $countResult['name'];
-		$userSurname = $countResult['surname'];
-		$moto = $countResult['moto'];
-		$coverType = $countResult['coverType'];
-		$coverColor = $countResult['coverColor'];
-		$antiSkidStripes = $countResult['antiSkidStripes'];
-		$antiSkidStripesType = $countResult['antiSkidStripesType'];
-		$antiSkidStripesColor = $countResult['antiSkidStripesColor'];
-
-
-		$numRowsFromCount = mysqli_num_rows($count); //считаем количество строк
-		if ($numRowsFromCount > 0) {
+		$count = mysqli_query($link, "SELECT * FROM `seats` WHERE (`name` = '$userName' && `surname` = '$userSurname');");
+		
+		if ($count) {
 			?>
 
-			<table class="tableResult" border="2px solid black" cellpadding="10px" cellspacing="10px" style="margin: unset; padding: unset">
+			<table class="tableResult" cellpadding="10px" cellspacing="10px">
 				<tr>
+					<th>Номер заказа</th>
 					<th>Мотоцикл</th>
 					<th>Тип покрытия</th>
 					<th>Цвет покрытия</th>
 					<th>Полосы есть/нет</th>
 					<th>Тип полос</th>
 					<th>Цвет полос</th>
-					<!-- 
-					<th>Заголовок</th>
-					<th>Заголовок</th>
-					<th>Заголовок</th>
-					<th>Заголовок</th>
-					<th>Заголовок</th>
-					<th>Заголовок</th> 
-					-->
 				</tr>
 				<?
-					for ($i = 0; $i < $count; $i++) {
+					/*while ($row_data = mysqli_fetch_row($count)) { Через mysqli_fetch_row
 						echo "<tr>";
-							echo"<td>$moto</th>";
-							echo"<td>$coverType</td>";
-							echo"<td>$coverColor</td>";
-							echo"<td>$antiSkidStripes</td>";
-							echo"<td>$antiSkidStripesType</td>";
-							echo"<td>$antiSkidStripesColor</td>";
+							echo"<td>$row_data[4]</th>";
+							echo"<td>$row_data[5]</td>";
+							echo"<td>$row_data[6]</td>";
+							echo"<td>$row_data[7]</td>";
+							echo"<td>$row_data[8]</td>";
+							echo"<td>$row_data[9]</td>";
 						echo "</tr>";
 					}
+					mysqli_free_result($count);*/
+
+					while ($countResult = mysqli_fetch_assoc($count)) {
+						$idSeat = $countResult['id_seat'];
+						$moto = $countResult['moto'];
+						$coverType = $countResult['coverType'];
+						$coverColor = $countResult['coverColor'];
+						$antiSkidStripes = $countResult['antiSkidStripes'];
+						$antiSkidStripesType = $countResult['antiSkidStripesType'];
+						$antiSkidStripesColor = $countResult['antiSkidStripesColor'];
+						echo "<tr>";
+							echo "<td class='id'>$idSeat</td>";
+							echo"<td class='class1'>$moto</td>";
+							echo"<td class='class2'>$coverType</td>";
+							echo"<td class='class3'>$coverColor</td>";
+							echo"<td class='class4'>$antiSkidStripes</td>";
+							echo"<td class='class5'>$antiSkidStripesType</td>";
+							echo"<td class='class6'>$antiSkidStripesColor</td>";
+						echo "</tr>";
+					}
+					mysqli_free_result($count);
 				?>	
 			</table>
 

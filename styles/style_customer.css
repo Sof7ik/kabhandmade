@@ -82,6 +82,7 @@ label.anti_skid_stripe_color
 	display: block;
 	opacity: 1;
 	transition: all .3s;
+	outline: 1px solid red;
 }
 
 [type="radio"]:hover + label.anti_skid_stripe_color {
@@ -129,6 +130,13 @@ a.logo_a:hover, img.logo_img:hover {	/*Класс, привязанный к с�
 	box-shadow: 0px 0px 10px 2px black;
 }
 
+nav.nav1 {
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
 div.login {
 	display: flex;
 	flex-flow: column nowrap;
@@ -136,9 +144,21 @@ div.login {
 	align-items: flex-start;
 }
 
-p.name > span {
+p.name {
+	font-size: 18px;
+}
+
+p.name > a {
 	font-weight: bold;
-	font-size: 25px;
+	font-size: 20px;
+	text-decoration: none;
+	color: #2F6987;
+	transition: all .1s;
+}
+
+p.name > a:hover {
+	text-shadow: #B389D8 0 0 4px;
+	transition: all .1s;
 }
 
 a.cart { /*стили для кнопочек портфолио, стоимость, услуги*/
@@ -151,9 +171,10 @@ a.cart { /*стили для кнопочек портфолио, стоимос
 
 a.cart:hover { /*стили для ховера кнопочек портфолио, стоимость, услуги*/
 	color: #FF573D;
-	border-bottom: 1px solid #FF823A;
-	padding-bottom: 5px;
+/*	border-bottom: 1px solid #FF823A;
+	padding-bottom: 5px;*/
 	transition: all 0.4s;
+	text-shadow: #B389D8 0 0 10px;
 }
 
 content {					/*Класс-контейнер для формы на странице*/
@@ -176,7 +197,7 @@ img.seat_cover_type_logo, img.anti_skid_stripes_yes_or_no_logo { 		/*Класс,
 form.types {				/*Класс для главной формы на странице*/
 	background-image: url(/img/background.png);
 	background-size: cover;
-	padding: 1.5% 4%;
+	padding: 1.5% 2%;
 }
 
 section.motocycle_type_select {		/*Класс, привязанный к секцции выбора мотика и типа покрытия сиденья*/
@@ -187,12 +208,13 @@ section.motocycle_type_select {		/*Класс, привязанный к сек�
 }
 
 .input_motocycle_type_select {
-	width: 300px; 
+	width: 500px; 
 	height: 30px;
 	border: 3px solid #22EEB8;
 	padding: 0.2% 0.5%;
 	font-size: 20px;
 	border-radius: 10px;
+	text-align: center;
 }
 
 .input_motocycle_type_select:focus {

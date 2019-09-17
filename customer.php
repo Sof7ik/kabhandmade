@@ -34,25 +34,15 @@ $userId = $_SESSION['userId'];
 				<a href="https://vk.com/kabhandmade" class="logo_a"><img src="img/logos/vk_icon.png" class="logo_img"></a>
 			</nav>
 
-			<nav>
+			<nav class="nav1">
 				<a href="galery.php" class="cart" style="text-shadow: #B389D8 0 0 10px;">ГАЛЕРЕЯ ЦВЕТОВ, МАТЕРИАЛОВ</a>
+				<a href="https://vk.com/album-171066683_258630943" class="cart" style="text-shadow: #B389D8 0 0 10px; margin-top: 3%;">ГАЛЕРЕЯ РАБОТ</a>
 			</nav>
 
 			<div class="login">
 				
 				<?
-					/*$query1 = "SELECT 'role_name' FROM `roles` WHERE `id_role` = $_SESSION['role'];";
-					$query = mysqli_query($link, $query1);
-					$result = mysqli_fetch_assoc($query);*/
-					echo "<p class='name'>Вы вошли как <a href='cabinet.php'><span>" . $_SESSION['username'] . "</span></a></p>";
-					echo "Фамилия - " . $_SESSION['surname'];
-					echo "<br>";
-					echo "Роль - " . $_SESSION['role'];
-					echo "<br>";
-					echo "ID User - " . $_SESSION['userId'];
-					echo "<br>";
-					echo "Login - " . $_SESSION['login'];
-					/*echo "<p>Роль " . $_SESSION['role'] . "</p>";*/
+					echo "<p class='name'>Вы вошли как <br><a href='cabinet.php'>" . $_SESSION['username'] . "</a></p>";
 				?>
 
 				<div style="display: flex; flex-flow: row wrap; justify-content: center">
@@ -64,7 +54,7 @@ $userId = $_SESSION['userId'];
 					}
 					?>
 
-					<a href="cart.php" class="cart">Корзина</a>
+					<a href="cart.php" class="cart">КОРЗИНА</a>
 					<a href="logout.php" class="cart">ВЫХОД</a>
 
 				</div>
@@ -79,7 +69,7 @@ $userId = $_SESSION['userId'];
 
 			<section class="motocycle_type_select">
 	
-				<h3 style="margin-bottom: 0.5%;">ВВЕДИТЕ НАЗВАНИЕ МОТОЦИКЛА СЮДА</h3>
+				<h3 style="margin-bottom: 0.5%;">ВВЕДИТЕ НАЗВАНИЕ МОТОЦИКЛА СЮДА (МАРКА, МОДЕЛЬ, ГОД)</h3>
 				<input type="text" name="motocycle_type_select" class="input_motocycle_type_select" required="">
 
 			</section>
@@ -295,7 +285,7 @@ $userId = $_SESSION['userId'];
 				<div class="submit">
 
 					<input type="checkbox" required="" class="checkbox">
-					<p>Согласен с <a href="send.php" class="nothing">условиями заказа</a>, а так же подтверждаю <span style="font-weight: bold; color: #E8FF03">правильность</span> выбора</p>
+					<p>Согласен с <a href="terms.html" class="nothing">условиями заказа</a>, а так же подтверждаю <span style="font-weight: bold; color: #E8FF03">правильность</span> выбора</p>
 
 				</div>
 

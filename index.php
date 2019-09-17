@@ -44,21 +44,15 @@ $loginSubmit = $_POST['button'];
 
 					$count = mysqli_query($link, "SELECT * FROM `users` WHERE (`login` = '$userLoginOrEmail' || `email` = '$userLoginOrEmail' || `tel` = '$userLoginOrEmail')  AND `password` = '$userPassword';");				
 
-					$countResult = mysqli_fetch_assoc($count); //получили ассоциативный массив
+					$countResult = mysqli_fetch_assoc($count);
 
-					$userName = $countResult['name']; //присваиваем значение из БД для приветсвтвия
+					$userName = $countResult['name'];
 					$userSurname = $countResult['surname'];
-					$userRole = $countResult['id_role']; //присваиваем значение из БД для редиректа
+					$userRole = $countResult['id_role'];
 					$userLogin = $countResult['login'];
 					$userId = $countResult['id_user'];
 
-					/*$roleNameSelect = mysqli_query($link, "SELECT * FROM `roles` WHERE `id_role` = '$userRole';");
-							
-					$roleNameSelectResult = mysqli_fetch_assoc($roleNameSelectResult);
-
-					$_SESSION['roleName'] = $roleNameSelectResult['role_name'];*/
-
-					$numRowsFromCount = mysqli_num_rows($count); //считаем количество строк
+					$numRowsFromCount = mysqli_num_rows($count);
 
 
 					    if ($numRowsFromCount == 1) { //если есть одна строка,
@@ -71,10 +65,14 @@ $loginSubmit = $_POST['button'];
 						        	$_SESSION['role'] = $userRole;      
 						        	$_SESSION['login'] = $userLogin;
 						        	$_SESSION['userId'] = $userId;
+
+						        	$selectRole = mysqli_query($link, "SELECT * FROM `roles` WHERE (`id_role` = '$userRole');");
+									$selectRoleResult = mysqli_fetch_assoc($selectRole);
+									$_SESSION['roleName'] = $selectRoleResult['role_name']; //есть такая переменная
+
 						            echo "<p class='borderedText'>Привет, " . $userName . "! Сейчас Вы будете перенаправлены на страницу заказа!</p>";
-						            //echo $_SESSION['roleName'];
 						        echo"</div>";
-					            echo '<meta http-equiv="refresh" content="5;customer.php">';
+					            echo '<meta http-equiv="refresh" content="2;customer.php">';
 					        }
 
 					        if ($countResult['id_role'] == 2) {
@@ -85,9 +83,15 @@ $loginSubmit = $_POST['button'];
 						        	$_SESSION['role'] = $userRole;      
 						        	$_SESSION['login'] = $userLogin;
 						        	$_SESSION['userId'] = $userId;
+
+									$selectRole = mysqli_query($link, "SELECT * FROM `roles` WHERE (`id_role` = '$userRole');");
+									$selectRoleResult = mysqli_fetch_assoc($selectRole);
+									print_r($selectRoleResult);
+									$_SESSION['roleName'] = $selectRoleResult['role_name']; //есть такая переменная
+
 						            echo "<p class='borderedText'>Привет, " . $userName . "! Сейчас Вы будете перенаправлены на страницу администратора!</p>";
 						        echo"</div>";
-					            echo '<meta http-equiv="refresh" content="5;admin.php">';
+					            echo '<meta http-equiv="refresh" content="2;admin.php">';
 					        }
 
 					        if (empty($countResult['id_role'])) {
@@ -115,7 +119,7 @@ $loginSubmit = $_POST['button'];
 					<div class="auth_div">
 
 						<input type="submit" name="button" value="ВОЙТИ" class="submit">
-						<button href="registration.php" class="submit">РЕГИСТРАЦИЯ</button>
+						<a href="registration.php" class="submit">РЕГИСТРАЦИЯ</a>
 
 					</div>
 

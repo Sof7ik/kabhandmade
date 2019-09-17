@@ -38,13 +38,14 @@ $loginSubmit = $_POST['loginSubmit'];
 <head>
 	<link rel="stylesheet" type="text/css" href="styles/style_registration.css">
 	<meta charset="utf-8">
+	<link rel="icon" href="favicon.ico">
 	<title>РЕГИСТРАЦИЯ</title>
 </head>
 <body>
 
 	<div class="wrapper">
 
-		<h1>РЕГИСТРАЦИЯ</h1>
+		<h1>Регистрация - KaB HandMAde</h1>
 
 		<?php
 

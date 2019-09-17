@@ -11,7 +11,7 @@ if (!isset($_SESSION['username'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Личный кабинет - KaB HandMade</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="styles/style_cart.css">
 </head>
@@ -23,7 +23,9 @@ if (!isset($_SESSION['username'])) {
 		echo "<p class='name'>Вы вошли как <a href='cabinet.php'>" . $_SESSION['username'] . "</a></p>";
 		echo "Фамилия - " . $_SESSION['surname'];
 		echo "<br>";
-		echo "Роль - " . $_SESSION['role'];
+		echo "ID роли - " . $_SESSION['role'];
+		echo "<br>";
+		echo "Имя роль - " . $_SESSION['roleName'];
 		echo "<br>";
 		echo "ID User - " . $_SESSION['userId'];
 		echo "<br>";
@@ -39,7 +41,7 @@ if (!isset($_SESSION['username'])) {
 		}
 		?>
 
-		<a href="cart.php" class="cart">ГЛАВНАЯ</a>
+		<a href="customer.php" class="cart">ГЛАВНАЯ</a>
 		<a href="logout.php" class="cart">ВЫХОД</a>
 
 	</div>
