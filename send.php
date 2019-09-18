@@ -79,8 +79,6 @@ echo "<a class='cart' href='customer.php'>НА ГЛАВНУЮ</a>";
 $query = "INSERT INTO `seats`(
 `id_seat`, 
 `id_user`, 
-`name`, 
-`surname`,
 `moto`, 
 `coverType`, 
 `coverColor`, 
@@ -91,8 +89,6 @@ $query = "INSERT INTO `seats`(
 VALUES (
 NULL,
 '$userId',
-'$userName',
-'$userSurname',
 '$moto', 
 '$seat_cover_type', 
 '$seat_cover_color', 

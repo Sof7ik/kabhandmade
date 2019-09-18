@@ -11,6 +11,7 @@ $userName = $_SESSION['username'];
 $userSurname = $_SESSION['surname'];
 $userLogin = $_SESSION['login'];
 $userRole = $_SESSION['role'];
+$userId = $_SESSION['userId'];
 
 ?>
 <!DOCTYPE html>
@@ -61,8 +62,7 @@ $userRole = $_SESSION['role'];
 
 	<?
 
-		$count = mysqli_query($link, "SELECT * FROM `seats` WHERE (`name` = '$userName' && `surname` = '$userSurname');");
-		
+		$count = mysqli_query($link, "SELECT * FROM `seats` WHERE (`id_user` = '$userId');");
 		if ($count) {
 			?>
 
