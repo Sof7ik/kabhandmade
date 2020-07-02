@@ -1,0 +1,56 @@
+@mixin flex($ff, $jc, $ai)
+{
+    display: flex;
+    flex-flow: $ff;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+@mixin grid($columns, $gap)
+{
+    display: grid;
+    grid-template-columns: $columns;
+    grid-gap: $gap;
+}
+
+@media all and (max-width: 850px)
+{
+    section.constructor
+    {
+        @include grid(1fr, 20px);
+
+        padding: 20px;
+    }
+}
+
+@media all and (max-width: 640px) {
+    header {
+        img 
+        {
+            margin-right: unset;
+            width: 150px;
+        }
+
+        nav 
+        {
+            width: 100%;
+        }
+    }
+}
+
+@media all and (max-width: 340px) {
+    header {
+        img {
+            width: 100px;
+        }
+        nav
+        {
+            @include flex(column nowrap, flex-start, center);
+    
+            div.menu__item {
+                margin-right: unset;
+            }
+        }
+    }
+    
+}

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta name='keywords' content=' '/>
+    <meta name='description' content=' '/>
+    <meta name='owner' content='bychkov.l47@mail.ru'/>
+    <meta name='author' lang='ru' content='ItWebteam <bychkov.l47@mail.ru>'/>
+    <meta http-equiv='content-type' content='text/html'; />
+    <meta name='resource-type' content='Document'/>
+    <meta name='robots' content='noindex,nofollow'/>
+    <meta http-equiv='content-language' content='ru'/>
+    <meta http-equiv='pragma' content='no-cache'/>
+
+    <title>KAB HandMade - пошив чехлов на сиденья мототехники на заказ по низким ценам</title>
+
+    <!-- icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel='stylesheet' href='./prod/styles/css/style.min.css'>
+    <link rel='stylesheet' href='./prod/styles/css/media.min.css'>
+
+    <!-- <script src='./prod/scripts/js/main.min.js' defer></script> -->
+    <!-- <script src='./prod/scripts/js/params.min.js' defer></script> -->
+    <!-- <script src='./prod/scripts/js/canvases.min.js' defer></script> -->
+    
+    <script src="./dev/scripts/js/params.js" defer></script>
+    <script src='./dev/scripts/js/canvases.js' defer></script>
+    
+</head>
+<body>
+    <div class='container'>
+        <header>
+            <img src="./img/kab logo.png" alt="logo" class="header__logo">
+            
+            <nav class="menu">
+                <div class="menu__item menu__item-active"><a href="./index.html">главная</a></div>
+
+                <div class="menu__item"><a href="./about.html">о нас</a></div>
+
+                <div class="menu__item"><a href="./contacts.html" style="padding-bottom: 0px;">контакты<span>доставка</span></a></div>
+
+                <div class="menu__item"><a href="https://vk.com/albums-171066683" target="_blank">галерея</a></div>
+                
+                <!-- <div class="menu__item"><a href="#">ГАЛЕРЕЯ</a></div> -->
+                <!-- <div class="menu__item"><a href="#">ГАЛЕРЕЯ</a></div> -->
+            </nav>
+        </header>
+
+        <main>
+            <div class="messages" style="display: none;">
+                <span class="material-icons close">highlight_off</span>
+            </div>
+            <section class="constructor">
+
+                <section class="left-wrapper">
+
+                    <div class="seat-preview">
+                        <img src="./img/examples/seat example 2-4.png" alt="seat-example" class="seat-example__image">
+                        <!-- <img src="./img/кожзам.png" alt="logo-preview" class="example-LaywerUp example-kozhzam"> -->
+
+                        <img src="./img/render/kab logo example.png" alt="logo-preview" class="example-LaywerUp example-logo">
+
+                        <img src="./img/render/num.png" alt="num-preview" class="example-LaywerUp" id="example-num" style="display: none;">
+
+                        <img src="./img/render/ribbons/all/fabric/yellow.png" alt="ribbons-preview" class="example-LaywerUp" id="example-ribbons" style="display: none;">
+
+                        <img src="./img/render/ext-sides/ext-sides-red.png" alt="ext-sides-preview" class="example-LaywerUp example-ext-sides" style="display: none;" id="example-ext-sides">
+
+                        <canvas class="seat-preview__canvas" id="canvasCenter"></canvas>
+                        <canvas class="seat-preview__canvas" id="canvasSides"></canvas>
+                        <canvas class="seat-preview__canvas" id="canvasRibbons"></canvas>
+                        <canvas class="seat-preview__canvas" id="canvasExtSides"></canvas>
+                        
+                    </div>
+                    
+                    <!-- <div class="info-bar"><p>ВЫБЕРИТЕ ЦВЕТА НИЖЕ</p></div> -->
+                    <div class="selects">
+                        <div class="selectVehicle">
+                            <label for="selectVehicle">Введите марку, модель и год мотоцикла</label>
+                            <input type="text" list="selectVehicle-search" name="" id="selectVehicle">
+                            
+                        </div>
+                    </div>
+
+                    <div class="comment">
+                        <span>Здесь Вы можете оставить свой комментарий 👇🏻</span>
+                        <textarea class="comment"></textarea>
+                    </div>
+    
+                </section>
+
+
+                <section class="customize">
+                    <!-- <div class="presets">
+                        <div class="presets__preset preset-1">Yellow/Blue</div>
+                        <div class="presets__preset preset-2">Yellow/Blue</div>
+                        <div class="presets__preset preset-3">Yellow/Blue</div>
+                    </div> -->
+
+                    <div class="main-params">
+                        <p> Основной цвет сиденья</p>
+                        
+                        <div class="places">
+                            <div class="param-wrapper">
+
+                                <input type="radio" name="places__radio" id="places__radio-center" class="param-input" value="canvasCenter">
+                                <label for="places__radio-center" class="label-for-places__radio">
+                                    <div class="param main-param places__center">
+                                        <div class="param-color" style="background: url('./img/png.png');"></div>
+                                        <p class="param-label">Центральная часть</p>
+                                    </div>
+
+                                    <select name="" id="hidden-select-center" class="hidden-select" style="display: block;">
+                                        <option value="кожзам">Кожзам</option>
+                                        <option value="пупырчатый">Пупырчатый</option>
+                                        <option value="корзинка">Корзинка</option>
+                                    </select>
+                                </label>
+                                
+                            </div>
+
+                            <div class="param-wrapper">
+                                <input type="radio" name="places__radio" id="places__radio-sides" class="param-input" value="canvasSides">
+                                <label for="places__radio-sides" class="label-for-places__radio">
+                                    <div class="param main-param places__sides">
+                                        <div class="param-color" style="background: url('./img/png.png');"></div>
+                                        <p class="param-label">Боковые части</p>
+                                    </div>
+
+                                    <select name="" id="hidden-select-sides" class="hidden-select" style="display: block;">
+                                        <option value="./img/ribbons.png">Кожзам</option>
+                                        <option value="./img/ribbons-2.png">Пупырчатый</option>
+                                        <option value="./img/ribbons-3.png">Корзинка</option>
+                                    </select>
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="external-params">
+
+                        <p> Дополнительные параметры</p>
+
+                        <div class="places">
+                            <input 
+                                type="radio" 
+                                name="places__radio" 
+                                id="places__radio-ribbons" 
+                                class="param-input" 
+                                value="canvasRibbons">
+
+                            <label for="places__radio-ribbons" class="label-for-places__radio">
+
+                                <div class="param ext-param places__ribbons">
+                                    <div class="ext-param-innerWrapper" id="ext-param-ribbons">
+                                        <input 
+                                            type="checkbox" 
+                                            name="" 
+                                            id="places__ribbons"
+                                            class="external-param-checkbox"
+                                        >
+    
+                                        <p class="param-label" for="places__ribbons">
+                                            Антискользящие полоски
+                                        </p>
+                                    </div>
+
+                                    <div class="selects" style="display: none;">
+                                        <select name="" id="hidden-select-ribbons-position" class="hidden-select" style="display: block;">
+                                            <option value="back">Только сзади</option>
+                                            <option value="all" selected>По всему сиденью</option>
+                                        </select>
+    
+                                        <select name="" id="hidden-select-ribbons-type" class="hidden-select" style="display: block;">
+                                            <option value="fabric">Тряпочные</option>
+                                            <option value="rubber-arrow">Стреловидные</option>
+                                            <option value="rubber-circle">Круглые</option>
+                                            <option value="rubber-rhombus">Ромбовидные</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                            </label>
+                            
+                            <input 
+                                type="radio" 
+                                name="places__radio" 
+                                id="places__radio-extSides" 
+                                class="param-input" 
+                                value="canvasExtSides">
+
+                            <label for="places__radio-extSides" class="label-for-places__radio">
+
+                                <div class="param ext-param places__external-sides">
+                                    <div class="ext-param-innerWrapper" id="ext-param-ext-sides">
+                                        <input 
+                                            type="checkbox" 
+                                            name="" 
+                                            id="places__external-sides"
+                                            class="external-param-checkbox"
+                                        >
+    
+                                        <p class="param-label" for="places__external-sides">
+                                            Усиленные боковые вставки
+                                        </p>
+                                    </div>
+
+                                    <!-- <select name="" id="hidden-select-ext-sides" class="hidden-select" style="display: none;">
+                                        <option>Option 1</option>
+                                        <option>Option 2</option>
+                                        <option>Option 3</option>
+                                        <option>Option 4</option>
+                                    </select> -->
+
+                                </div>
+                                
+                            </label>
+
+                            <input 
+                                type="radio" 
+                                name="places__radio" 
+                                id="places__radio-number" 
+                                class="param-input" 
+                                value="number">
+
+                            <label for="places__radio-number" class="label-for-places__radio label-no-active">
+
+                                <div class="param ext-param places__start-number">
+                                    <div class="ext-param-innerWrapper">
+                                        <input 
+                                            type="checkbox" 
+                                            name="" 
+                                            id="places__start-number"
+                                            class="input-for-hidden canDisabled"
+                                        >
+    
+                                        <p class="param-label" for="places__start-number">
+                                            Стартовый номер
+                                        </p>
+                                    </div>
+
+                                    <input 
+                                        
+                                        id="places__start-number-hidden-input" 
+                                        class="hidden-input" 
+                                        name="ice-cream-choice"
+                                        placeholder="Введите номер"
+                                        style="display: none;" 
+                                        type="text"
+                                        maxlength="3"/>
+
+                                </div>
+                                
+                            </label>
+
+                            <input 
+                                type="radio" 
+                                name="places__radio" 
+                                id="places__radio-logo" 
+                                class="param-input" 
+                                value="logo">
+
+                            <label for="places__radio-logo" class="label-for-places__radio label-no-active">
+
+                                <div class="param ext-param places__moto-logo">
+                                    <div class="ext-param-innerWrapper">
+                                        <input 
+                                            type="checkbox" 
+                                            name="" 
+                                            id="places__moto-logo"
+                                            class="input-for-hidden canDisabled"
+                                        >
+    
+                                        <p class="param-label" for="places__moto-logo">
+                                            Логотип мотоцикла
+                                        </p>
+                                    </div>
+    
+                                    <input
+                                        list="input-number" 
+                                        type="text" 
+                                        name="" 
+                                        id="places__moto-logo-hidden-input" 
+                                        class="hidden-input" 
+                                        placeholder="Введите марку" 
+                                        style="display: none;"
+                                    >
+
+                                    <datalist id="input-number">
+                                        <option value="Kawasaki">
+                                        <option value="Suzuki">
+                                        <option value="Honda">
+                                        <option value="KTM">
+                                        <option value="Yamaha">
+                                        <option value="Husqvarna">
+                                        <option value="Husaberg">
+                                    </datalist>
+                                </div>
+                                
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <div class="colors">
+                        <span>Выберите цвет</span>
+
+                        <div>
+                            <div 
+                                class="color colors__yellow"
+                                style="background-color: yellow;">
+                            </div>
+
+                            <div 
+                                class="color colors__red"
+                                style="background-color: red;">
+                            </div>
+
+                            <div 
+                                class="color colors__green"
+                                style="background-color: green;">
+                            </div>
+
+                            <div 
+                                class="color colors__blue"
+                                style="background-color: blue;">
+                            </div>
+
+                            <div 
+                                class="color colors__black"
+                                style="background-color: black;">
+                            </div>
+
+                            <div
+                                class="color colors__white"
+                                style="background-color: white; display: block;">
+                            </div>
+
+                            <div 
+                                class="color colors__orange"
+                                style="background-color: orange; display: none;">
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <p class="price" id="price"><span></span>₽</p>
+
+                </section>
+
+            </section>
+
+        </main>
+        
+    </div>
+
+</body>
+</html>

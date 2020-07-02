@@ -1,0 +1,5 @@
+blue - 2a315b
+green - 879444
+yellow - f8cf59
+white - ffffff
+red - d01d3a
