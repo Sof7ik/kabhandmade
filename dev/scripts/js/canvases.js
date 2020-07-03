@@ -12,7 +12,7 @@ class MyError {
         messageElem.style.display = 'flex';
         messageElem.style.padding = '5px 25px 5px 5px';
 
-        document.querySelector('div.messages > span.close').addEventListener('click', this.closeErrorsWindow)
+        document.querySelector('div.messages > span.close').addEventListener('click', this.closeErrorsWindow);
     }
 
     closeErrorsWindow () {
@@ -22,7 +22,7 @@ class MyError {
                 elem.remove();
             })
         }
-        document.querySelector('div.messages > span.close').removeEventListener('click', this.closeErrorsWindow)
+        document.querySelector('div.messages > span.close').removeEventListener('click', this.closeErrorsWindow);
     }
 }
 
@@ -32,6 +32,7 @@ const canvasCenterElem = document.getElementById('canvasCenter');
 const canvasSidesElem = document.getElementById('canvasSides');
 
 const canvasCenter = canvasCenterElem.getContext('2d');
+
 canvasCenter.beginPath();
 //приезжаем в начало
 canvasCenter.moveTo(105, 4);
@@ -232,7 +233,6 @@ const changeRibbonsColor = (event) => {
 console.log(document.querySelectorAll('input[type="radio"].param-input'));
 document.querySelectorAll('input[type="radio"].param-input').forEach( (elem)=> {
     elem.addEventListener('change', (event) => {
-        target = event.target;
 
         if (document.getElementById('places__radio-ribbons').checked)
         {

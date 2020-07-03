@@ -1,0 +1,178 @@
+section.customize
+{
+    @include flex(column nowrap, flex-start, flex-start);
+}
+
+div.main-params, 
+div.external-params
+{
+    @include flex(column nowrap, flex-start, flex-start);
+    width: 100%;
+}
+
+div.places
+{
+    @include flex(column nowrap, flex-start, flex-start);
+    width: 100%;
+
+    div, label {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    div.selects
+    {
+        margin-top: 15px;
+    }
+}
+
+label.label-for-places__radio
+{
+    display: block;
+    @extend %borders;
+
+    select.hidden-select
+    {
+        width: 100%;
+        padding: 5px;
+    }
+}
+
+div.param
+{
+    font-family: 'Roboto', sans-serif;
+    transition: all 0.3s;
+
+    user-select: none;
+
+    max-width: 200px;
+
+    padding: 5px;
+
+    &:hover
+    {
+        box-shadow: 0 0 1em rgb(100, 100, 100);
+    }
+
+    .param-label
+    {
+        cursor: pointer;
+    }
+}
+
+input.param-input
+{
+    display: none;
+}
+
+// input.param-input:checked + label {
+//     outline: 2px solid rgb(44, 44, 44);
+// }
+
+.active-param
+{
+    outline: 2px solid rgb(44, 44, 44);
+}
+
+div.main-param
+{
+    @include flex(row wrap, flex-start, center);
+
+    div.param-color
+    {
+        width: 20px;
+        height: 20px;
+
+        transition: all .3s;
+    }
+}
+
+div.param.places__center,
+div.param.places__sides
+{
+    .param-label
+    {
+        margin-left: 10px;
+    }
+
+    &:hover
+    {
+        cursor: pointer;
+    }
+}
+
+div.external-params
+{
+    margin-top: 20px;
+}
+
+div.ext-param
+{
+    @include flex(column nowrap, center, flex-start);
+
+    div.ext-param-innerWrapper
+    {
+        @include flex(row nowrap, flex-start, center);
+    }
+
+    input[type="checkbox"]
+    {
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+    }
+
+    input[type="text"].hidden-input
+    {
+        margin-top: 10px;
+
+        padding: 2px;
+        font-size: 15px;
+        width: 140px;
+    }
+}
+
+div.colors
+{
+    @include flex(column wrap, flex-start, flex-start);
+
+    margin-top: 30px;
+
+    span {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+        font-size: 30px;
+        letter-spacing: 1px;
+    };
+
+    div
+    {
+        // @include grid(1fr 1fr 1fr 1fr 1fr 1fr 1fr, 10px);
+        @include flex(row wrap, flex-start, center);
+
+        margin-top: 10px;
+
+        width: 100%;
+
+        div.color
+        {
+            width: 60px;
+            height: 60px;
+
+            transition: transform .3s;
+            margin-right: 10px;
+        }
+
+        div.color:last-child
+        {
+            margin-right: 0;
+        }
+
+        div.color.active-color
+        {
+            outline: 3px solid rgb(89, 0, 255);
+            transform: scale(1.1);
+        }
+    }
+}

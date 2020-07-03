@@ -1,0 +1,50 @@
+#Host: candles.01sh.ru
+#Sitemap: http://candles.01sh.ru/sitemap.xml
+
+User-agent: *
+Disallow:
+/dev/
+/prod/
+/contacts.html
+
+User-agent: googlebot
+Allow:
+/img/*.png
+/img/examples/*.png
+/img/render/*.png
+/img/render/ribbons/all/fabric/*.png
+/img/render/ribbons/all/rubber-arrow/*.png
+/img/render/ribbons/all/rubber-circle/*.png
+/img/render/ribbons/all/rubber-rhombus/*.png
+
+/img/render/ribbons/back/fabric/*.png
+/img/render/ribbons/back/rubber-arrow/*.png
+/img/render/ribbons/back/rubber-circle/*.png
+/img/render/ribbons/back/rubber-rhombus/*.png
+
+/img/render/logos/*.png
+/img/render/ext-sides/*.png
+
+/prod/styles/*.css
+/prod/scripts/*.js
+
+User-agent: YandexBot
+Allow:
+
+/img/*.png
+/img/examples/*.png
+/img/render/*.png
+/img/render/ribbons/all/fabric/*.png
+/img/render/ribbons/all/rubber-arrow/*.png
+/img/render/ribbons/all/rubber-circle/*.png
+/img/render/ribbons/all/rubber-rhombus/*.png
+
+/img/render/ribbons/back/fabric/*.png
+/img/render/ribbons/back/rubber-arrow/*.png
+/img/render/ribbons/back/rubber-circle/*.png
+/img/render/ribbons/back/rubber-rhombus/*.png
+
+/img/render/logos/*.png
+/img/render/ext-sides/*.png
+/prod/styles/*.css
+/prod/scripts/*.js

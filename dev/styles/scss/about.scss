@@ -1,0 +1,40 @@
+h1
+{
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: 30px;
+}
+
+section
+{
+    margin-top: 40px;
+
+    div.photos
+    {
+        @include flex(row wrap, space-evenly, center);
+        margin-top: 10px;
+
+        div.section-photo {
+            width: 150px; 
+            height: 150px;
+
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center center;
+        }
+    }
+}
+
+p.mainSite {
+    padding: 40px;
+
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 13px;
+
+    color: rgb(230, 230, 230);
+
+    span {
+        color: rgb(116, 116, 116);
+    }
+}
